@@ -17,7 +17,7 @@ con difficoltà 2 => tra 1 e 50
 var listaBombe = [];
 var numMax;
 var lista = [];
-
+var possibilità;
 var punteggio = 0;
 
 var diff = Number(prompt('a che difficoltà vuoi giocare da 0 a 2?'));
@@ -30,9 +30,9 @@ if(diff == 0){
     numMax = 50;
 }
 
-var possibilità = numMax -16; 
+possibilità = numMax - 16; 
 
-
+console.log(possibilità);
 // funzione che genera numeri random compresi tra min e max
 function getRandomNumbers(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -53,11 +53,16 @@ console.log(listaBombe);
 
 do {
     var numeroUtente = Number(prompt('inserisci un numero da uno a' + numMax));
-
+    var play = true;
     if(listaBombe.includes(numeroUtente)){
         
         alert('hai perso hai totalizzato:' + punteggio + 'punti');
         punteggio = punteggio - 1;
+        
+        play = confirm('vuoi ricominciare?');
+        numeroUtente = null;
+        lista.length = null;
+        punteggio = 0;
 
     } else if (lista.includes(numeroUtente)){
         alert('hai già inserito questo numero');
@@ -74,10 +79,12 @@ do {
       console.log(lista.length + 'lengh');
       console.log(lista);
 
-} while (lista.length < possibilità && !listaBombe.includes(numeroUtente));
+} while (lista.length < possibilità && !listaBombe.includes(numeroUtente) && play);
 
-if (lista.length == punteggio){
+if (lista.length == punteggio && play){
     alert('hai vinto');
+}else {
+    alert('GAME OVER');
 }
 
 
