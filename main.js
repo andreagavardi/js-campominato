@@ -57,8 +57,7 @@ do {
     if(listaBombe.includes(numeroUtente)){
         
         alert('hai perso hai totalizzato:' + punteggio + 'punti');
-        punteggio = punteggio - 1;
-        
+               
         play = confirm('vuoi ricominciare?');
         numeroUtente = null;
         lista.length = null;
@@ -75,10 +74,7 @@ do {
         lista.push(numeroUtente);
         punteggio = punteggio + 1;
       }
-      console.log(punteggio + 'punti');
-      console.log(lista.length + 'lengh');
-      console.log(lista);
-
+      
 } while (lista.length < possibilità && !listaBombe.includes(numeroUtente) && play);
 
 if (lista.length == punteggio && play){
